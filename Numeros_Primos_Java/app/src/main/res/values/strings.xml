@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Numeros_Primos_Java</string>
+    <string name="si_primo">Si es un número primo</string>
+    <string name="no_primo">No es un número primo</string>
+    <string name="introducir">Introduce un número</string>
+    <string name="reiniciar">Reiniciar</string>
+    <string name="comprobar">Comprobar</string>
+</resources>
