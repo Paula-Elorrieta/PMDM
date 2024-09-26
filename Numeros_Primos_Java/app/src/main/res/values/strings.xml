@@ -5,4 +5,6 @@
     <string name="introducir">Introduce un número</string>
     <string name="reiniciar">Reiniciar</string>
     <string name="comprobar">Comprobar</string>
+    <string name="numero">Tu número</string>
+    <string name="error_numero">Error</string>
 </resources>

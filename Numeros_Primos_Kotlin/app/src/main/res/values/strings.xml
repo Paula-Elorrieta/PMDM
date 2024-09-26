@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Numeros_Primos_Kotlin</string>
+    <string name="insertar">Inserta un número</string>
+    <string name="es_primo">El número es primo</string>
+    <string name="no_es_primo">El número no es primo</string>
+    <string name="error">Error</string>
+    <string name="comprobar">Comprobar</string>
+    <string name="reiniciar">Reiniciar</string>
+    <string name="numero">Tu número</string>
+</resources>
