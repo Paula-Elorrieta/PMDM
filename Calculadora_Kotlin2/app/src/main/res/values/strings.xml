@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Calculadora_Kotlin</string>
+    <string name="calculator">Calculadora</string>
+    <string name="suma">+</string>
+    <string name="resta">-</string>
+    <string name="calcular">=</string>
+    <string name="error">Error</string>
+</resources>
