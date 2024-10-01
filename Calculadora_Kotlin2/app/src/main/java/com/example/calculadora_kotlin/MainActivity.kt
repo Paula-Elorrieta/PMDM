@@ -1,13 +1,16 @@
 package com.example.calculadora_kotlin
 
+import android.R
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,8 +24,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         val Botons = arrayOf(R.id.button0, R.id.button1, R.id.button2, R.id.button3,
-                        R.id.button4, R.id.button5, R.id.button6, R.id.button7, R.id.button8, R.id.button9)
-        val btnOperators = arrayOf(R.id.buttonResta, R.id.buttonSuma)
+                        R.id.button4, R.id.button5, R.id.button6, R.id.button7,
+                        R.id.button8, R.id.button9)
+        // val btnOperators = arrayOf(R.id.buttonResta, R.id.buttonSuma)
+        val btnSuma = findViewById<View>(R.id.buttonSuma) as Button
+        val btnResta = findViewById<View>(R.id.buttonResta) as Button
         val btnCalcular = R.id.buttonCalcular
         val TextView = findViewById<TextView>(R.id.textView)
         val EditText = findViewById<EditText>(R.id.editTextNumber)
@@ -32,7 +38,17 @@ class MainActivity : AppCompatActivity() {
             findViewById<View>(id).setOnClickListener {
                 // it es el botón que se ha pulsado y se puede hacer un casting a TextView
                 EditText.append((it as TextView).text)
+
             }
+        }
+
+        btnSuma.setOnClickListener {
+            EditText.append("+")
+            btnResta.isEnabled = true;
+        }
+
+        btnResta.setOnClickListener {
+            EditText.append("-")
         }
 
 
