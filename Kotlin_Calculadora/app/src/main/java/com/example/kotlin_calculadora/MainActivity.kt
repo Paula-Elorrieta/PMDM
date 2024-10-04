@@ -53,9 +53,9 @@ class MainActivity : AppCompatActivity() {
             val result = try {
                 Operations.doOperation(text)
         } catch (e: Exception) {
-                textView.text = "result"
+                textView.text = "error"
         }
-            textView.text = result.toString()
+
     }
 
     }
