@@ -1,6 +1,7 @@
 package com.example.kotlin_calculadora
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -20,12 +21,14 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val Botones = listOf(R.id.button0, R.id.button1, R.id.button2, R.id.button3,
-                            R.id.button4, R.id.button5, R.id.button6,
-                            R.id.button7, R.id.button8, R.id.button9)
+        val Botones = listOf(
+            R.id.button0, R.id.button1, R.id.button2, R.id.button3,
+            R.id.button4, R.id.button5, R.id.button6,
+            R.id.button7, R.id.button8, R.id.button9
+        )
         val btnSuma: Button = findViewById(R.id.buttonSuma)
-        val btnResta : Button = findViewById(R.id.buttonResta)
-        val btnCalcular : Button = findViewById(R.id.buttonCalcular)
+        val btnResta: Button = findViewById(R.id.buttonResta)
+        val btnCalcular: Button = findViewById(R.id.buttonCalcular)
         val editText: EditText = findViewById(R.id.editTextNumber)
         val textView: TextView = findViewById(R.id.textView)
 
@@ -48,22 +51,21 @@ class MainActivity : AppCompatActivity() {
             setEnabled(btnResta, btnSuma)
         }
 
-        val text = editText.text.toString()
         btnCalcular.setOnClickListener {
-            val result = try {
-                Operations.doOperation(text)
-        } catch (e: Exception) {
-                textView.text = "error"
+            try {
+                val resultado = Operations.doOperation(editText.text.toString());
+                Log.d("Resultado", resultado)
+                textView.text = resultado
+            }catch (e: Exception){
+                textView.text = R.string.error.toString()
+            }
         }
-
     }
 
-    }
-    private fun setEnabled(btnResta : Button, btnSuma : Button) {
+    private fun setEnabled(btnResta: Button, btnSuma: Button) {
         btnResta.isEnabled = false
         btnSuma.isEnabled = false
     }
-
 
 
 }

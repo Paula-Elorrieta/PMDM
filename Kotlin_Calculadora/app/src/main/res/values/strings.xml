@@ -4,4 +4,5 @@
     <string name="resta">-</string>
     <string name="calculator">Calculadora</string>
     <string name="calcular">=</string>
+    <string name="error">Syntax Error</string>
 </resources>
