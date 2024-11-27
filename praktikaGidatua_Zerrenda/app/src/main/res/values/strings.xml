@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">praktikaGidatua_Zerrenda</string>
+    <string name="arcane">Arcane pertsonaiak</string>
+    <string name="gehitu">Gehitu</string>
+    <string name="gehitu_pertsonaia">Gehitu pertsonaia</string>
+    <string name="itzuli">Itzuli</string>
+    <string name="estado">¿Esta vivo?</string>
+</resources>

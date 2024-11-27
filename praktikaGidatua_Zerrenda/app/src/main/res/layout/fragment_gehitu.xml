@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.GehituFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textViewTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="@string/gehitu_pertsonaia"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.046" />
+
+        <Button
+            android:id="@+id/buttonGehitu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="176dp"
+            android:text="@string/gehitu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <Button
+            android:id="@+id/buttonItzuli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="176dp"
+            android:text="@string/itzuli"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.153"
+            app:layout_constraintStart_toEndOf="@+id/buttonGehitu"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:layout_constraintVertical_bias="0.818" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="408dp"
+            android:layout_height="459dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="61dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/buttonGehitu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitulo">
+
+            <EditText
+                android:id="@+id/editTextID"
+                android:layout_width="344dp"
+                android:layout_height="48dp"
+                android:ems="10"
+                android:hint="ID"
+                android:inputType="text" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="49dp" />
+
+            <EditText
+                android:id="@+id/editTextNombre"
+                android:layout_width="344dp"
+                android:layout_height="48dp"
+                android:ems="10"
+                android:hint="Nombre"
+                android:inputType="text" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+
+            <EditText
+                android:id="@+id/editTextDescripcion"
+                android:layout_width="344dp"
+                android:layout_height="48dp"
+                android:ems="10"
+                android:hint="Descripción"
+                android:inputType="text" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="22dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="2dp"
+                android:text="@string/estado" />
+
+            <Spinner
+                android:id="@+id/spinnerEstado"
+                android:layout_width="344dp"
+                android:layout_height="48dp"
+                android:background="#FF0000"
+                android:hint="Estado"
+                android:backgroundTint="#D0A2FF" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
