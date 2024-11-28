@@ -18,6 +18,8 @@ import com.example.praktikagidatua_zerrenda.R;
 import java.util.ArrayList;
 
 public class ZerrendaFragment extends Fragment {
+    static Data data = new Data();
+    static ArrayList <Item> items = data.getItems();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,23 +28,6 @@ public class ZerrendaFragment extends Fragment {
         // Inflate es un método que se utiliza para convertir un archivo XML en un objeto de vista.
         View view = inflater.inflate(R.layout.fragment_zerrenda, container, false);
         Button buttonGehitu = view.findViewById(R.id.buttonGehitu);
-
-        ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item(1, "Vi",
-                "Una luchadora fuerte y decidida, conocida " +
-                        "por sus guantes Hextech y su carácter impulsivo.", "Si"));
-        items.add(new Item(2, "Jinx",
-                "Hermana de Vi, una pistolera caótica y " +
-                        "explosiva con un pasado traumático.", "No (?)"));
-        items.add(new Item(3, "Jayce",
-                "Un inventor brillante de Piltover, " +
-                        "creador de la tecnología Hextech.", "No"));
-        items.add(new Item(4, "Caitlyn",
-                "La mejor tiradora de Piltover, " +
-                        "comprometida con la justicia.", "Si"));
-        items.add(new Item(5, "Ekko",
-                "Un joven genio con la habilidad de " +
-                        "manipular el tiempo, líder de los Firelights.", "Si"));
 
         Bundle bundle = getArguments();
         if (bundle != null) {
@@ -64,14 +49,21 @@ public class ZerrendaFragment extends Fragment {
         buttonGehitu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("lastID", getLastId() + 1);
+                GehituFragment fragment = new GehituFragment();
+                fragment.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new GehituFragment())
+                        .replace(R.id.fragment_container, fragment)
                         .addToBackStack(null)
                         .commit();
             }
         });
 
-
         return view;
+    }
+
+    public int getLastId() {
+        return items.get(items.size() - 1).getId();
     }
 }
