@@ -5,4 +5,6 @@
     <string name="gehitu_pertsonaia">Gehitu pertsonaia</string>
     <string name="itzuli">Itzuli</string>
     <string name="estado">¿Esta vivo?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

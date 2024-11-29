@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class ZerrendaFragment extends Fragment {
     static Data data = new Data();
-    static ArrayList <Item> items = data.getItems();
+    static ArrayList<Item> items = data.getItems();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +58,22 @@ public class ZerrendaFragment extends Fragment {
                         .addToBackStack(null)
                         .commit();
             }
+        });
+
+        zerrendaBista.setOnItemClickListener((parent, view1, position, id) -> {
+            Item selectedItem = items.get(position);
+
+            Bundle itemBundle = new Bundle();
+            itemBundle.putInt("selectedId", selectedItem.getId());
+            itemBundle.putSerializable("itemsArrayList", items);
+
+            AldatuFragment fragment = new AldatuFragment();
+            fragment.setArguments(bundle);
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .addToBackStack(null)
+                    .commit();
+
         });
 
         return view;
