@@ -1,6 +1,8 @@
 package com.example.praktikagidatua_zerrenda;
 
-public class Item {
+import java.io.Serializable;
+
+public class Item implements Serializable {
 
     private int id;
     private String izena;

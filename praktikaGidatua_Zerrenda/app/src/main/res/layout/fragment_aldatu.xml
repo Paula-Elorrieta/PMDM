@@ -1,14 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.AldatuFragment">
+    android:orientation="vertical"
+    tools:context=".Fragments.AldatuFragment" >
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/textViewTitulo3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:gravity="center"
+        android:text="@string/aldatu"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.046" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="67dp" />
+
+    <EditText
+        android:id="@+id/editTextID2"
+        android:layout_width="220dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="ID"
+        android:inputType="text" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="33dp" />
+
+    <EditText
+        android:id="@+id/editTextNombre2"
+        android:layout_width="291dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="@string/izena"
+        android:inputType="text" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="33dp" />
+
+    <EditText
+        android:id="@+id/editTextDescripcion2"
+        android:layout_width="293dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/deskribapena"
+        android:inputType="textMultiLine"
+        android:minLines="3"
+        android:scrollbars="vertical" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="66dp" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="horizontal">
 
-</FrameLayout>
+        <Button
+            android:id="@+id/buttonGorde"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#4CAF50"
+            android:text="@string/gorde" />
+
+        <Button
+            android:id="@+id/buttonItzuli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/itzuli" />
+
+        <Button
+            android:id="@+id/buttonEzabatu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#F44336"
+            android:text="@string/ezabatu" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -31,13 +31,15 @@ public class ZerrendaFragment extends Fragment {
 
         Bundle bundle = getArguments();
         if (bundle != null) {
-            String izena = bundle.getString("izena");
-            String deskribapena = bundle.getString("deskribapena");
-            String egoera = bundle.getString("egoera");
-            int id = bundle.getInt("id");
+            if (bundle.getInt("id") != 0) {
+                String izena = bundle.getString("izena");
+                String deskribapena = bundle.getString("deskribapena");
+                String egoera = bundle.getString("egoera");
+                int id = bundle.getInt("id");
 
-            Item itemberria = new Item(id, izena, deskribapena, egoera);
-            items.add(itemberria);
+                Item itemberria = new Item(id, izena, deskribapena, egoera);
+                items.add(itemberria);
+            }
         }
 
         ListView zerrendaBista = view.findViewById(R.id.VistaZerrenda);
@@ -68,7 +70,7 @@ public class ZerrendaFragment extends Fragment {
             itemBundle.putSerializable("itemsArrayList", items);
 
             AldatuFragment fragment = new AldatuFragment();
-            fragment.setArguments(bundle);
+            fragment.setArguments(itemBundle);
             getActivity().getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, fragment)
                     .addToBackStack(null)
