@@ -31,9 +31,9 @@ public class AldatuFragment extends Fragment {
         EditText editTextID2 = view.findViewById(R.id.editTextID2);
         EditText editTextNombre2 = view.findViewById(R.id.editTextNombre2);
         EditText editTextDescripcion2 = view.findViewById(R.id.editTextDescripcion2);
+        bundle.putInt("id", 0);
 
         for (Item item : items) {
-            Log.e("ID", item.getId() + "");
             if (item.getId() == id)  {
                 editTextID2.setText(String.valueOf(item.getId()));
                 editTextNombre2.setText(item.getIzena());

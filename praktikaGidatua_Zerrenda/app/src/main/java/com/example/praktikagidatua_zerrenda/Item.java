@@ -8,12 +8,14 @@ public class Item implements Serializable {
     private String izena;
     private String deskribapena;
     private String egoera;
+    private String generoa;
 
-    public Item(int id, String izena, String deskribapena, String egoera) {
+    public Item(int id, String izena, String deskribapena, String egoera, String generoa) {
         this.id = id;
         this.izena = izena;
         this.deskribapena = deskribapena;
         this.egoera = egoera;
+        this.generoa = generoa;
     }
 
     public int getId() {
@@ -46,5 +48,13 @@ public class Item implements Serializable {
 
     public void setEgoera(String egoera) {
         this.egoera = egoera;
+    }
+
+    public String getGeneroa() {
+        return generoa;
+    }
+
+    public void setGeneroa(String generoa) {
+        this.generoa = generoa;
     }
 }

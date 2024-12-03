@@ -12,14 +12,14 @@
 
         <TextView
             android:id="@+id/textTitulua"
-            android:layout_width="387dp"
-            android:layout_height="125dp"
-            android:layout_marginTop="24dp"
+            android:layout_width="390dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="16dp"
             android:text="@string/arcane"
             android:textAlignment="center"
-            android:textSize="48sp"
+            android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.482"
+            app:layout_constraintHorizontal_bias="0.476"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,8 +36,8 @@
 
         <ListView
             android:id="@+id/VistaZerrenda"
-            android:layout_width="409dp"
-            android:layout_height="668dp"
+            android:layout_width="405dp"
+            android:layout_height="603dp"
             android:layout_marginStart="1dp"
             android:layout_marginTop="1dp"
             android:layout_marginEnd="1dp"
@@ -46,6 +46,48 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonGehitu" />
+
+        <EditText
+            android:id="@+id/editTextBilatu"
+            android:layout_width="250dp"
+            android:layout_height="55dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="52dp"
+            android:ems="10"
+            android:hint="@string/izena_bilatu"
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@+id/VistaZerrenda"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitulua"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/buttonGarbitu"
+            android:layout_width="124dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="116dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/garbitu"
+            app:layout_constraintBottom_toTopOf="@+id/VistaZerrenda"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.833"
+            app:layout_constraintStart_toStartOf="@+id/editTextBilatu"
+            app:layout_constraintTop_toBottomOf="@+id/editTextBilatu"
+            app:layout_constraintVertical_bias="0.857" />
+
+        <Button
+            android:id="@+id/buttonBilatu"
+            android:layout_width="110dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/iragazi"
+            app:layout_constraintBottom_toTopOf="@+id/VistaZerrenda"
+            app:layout_constraintEnd_toStartOf="@+id/buttonGarbitu"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/editTextBilatu"
+            app:layout_constraintTop_toBottomOf="@+id/editTextBilatu"
+            app:layout_constraintVertical_bias="0.386" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

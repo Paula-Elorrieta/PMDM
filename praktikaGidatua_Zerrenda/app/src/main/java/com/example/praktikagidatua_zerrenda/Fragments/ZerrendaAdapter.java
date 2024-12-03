@@ -10,13 +10,19 @@ import android.widget.TextView;
 import com.example.praktikagidatua_zerrenda.Item;
 import com.example.praktikagidatua_zerrenda.R;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ZerrendaAdapter extends ArrayAdapter<Item> {
 
+    ArrayList<Item> items;
+    ArrayList<Item> itemsFiltratuta = new ArrayList<>();
+
     // El ArrayAdapter necesita un constructor que reciba el contexto y la lista de elementos
     public ZerrendaAdapter(Context context, ArrayList<Item> items) {
         super(context, 0, items);
+        this.items = items;
+        this.itemsFiltratuta.addAll(items);
     }
 
     @Override
@@ -31,12 +37,31 @@ public class ZerrendaAdapter extends ArrayAdapter<Item> {
         TextView textDescripcion = convertView.findViewById(R.id.textDescripcion);
         TextView textID = convertView.findViewById(R.id.textID);
         TextView textEstado = convertView.findViewById(R.id.textEstado);
+        TextView textGeneroa = convertView.findViewById(R.id.textGeneroa);
 
         textName.setText(item.getIzena());
         textDescripcion.setText(item.getDeskribapena());
         textID.setText(item.getId() + "");
-        textEstado.setText("Esta vivo/a: " + item.getEgoera());
+        textEstado.setText("Bizirik dago: " + item.getEgoera());
+        textGeneroa.setText("Generoa: " + item.getGeneroa());
 
         return convertView;
+    }
+
+    public void filtraketaEgin(String texto) {
+
+        items.clear();
+
+        if (texto.isEmpty()) {
+            items.addAll(itemsFiltratuta);
+        } else {
+            texto = texto.toLowerCase();
+            for (Item item : itemsFiltratuta) {
+                if (item.getIzena().toLowerCase().contains(texto)) {
+                    items.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 }

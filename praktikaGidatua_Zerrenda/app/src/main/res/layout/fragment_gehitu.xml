@@ -73,7 +73,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="49dp" />
+                android:layout_height="17dp" />
 
             <EditText
                 android:id="@+id/editTextNombre"
@@ -85,7 +85,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="48dp" />
+                android:layout_height="17dp" />
 
             <EditText
                 android:id="@+id/editTextDescripcion"
@@ -97,7 +97,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="22dp" />
+                android:layout_height="17dp" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -114,6 +114,42 @@
                 android:background="#FF0000"
                 android:hint="Estado"
                 android:backgroundTint="#D0A2FF" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="2dp"
+                android:text="@string/generoa" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupGeneroa"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <RadioButton
+                    android:id="@+id/radioButtonFem"
+                    android:layout_width="182dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/femenino" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonMasc"
+                    android:layout_width="184dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/masculino" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonJesus"
+                    android:layout_width="183dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/jesus" />
+            </RadioGroup>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
