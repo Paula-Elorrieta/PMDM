@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ZerrendaSQLLite</string>
+    <string name="izena">Izena</string>
+    <string name="deskripzioa">Deskripzioa</string>
+    <string name="gorde">Gorde</string>
+    <string name="erakutsi_info">Erakutsi Info</string>
+</resources>
