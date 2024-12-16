@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.GehituFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textViewTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="@string/gehitu"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.046" />
+
+        <Button
+            android:id="@+id/buttonGehitu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/gehitu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <Button
+            android:id="@+id/buttonItzuli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="@string/itzuli"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.055"
+            app:layout_constraintStart_toEndOf="@+id/buttonGehitu"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:layout_constraintVertical_bias="0.612" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="410dp"
+            android:layout_height="531dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="61dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/buttonGehitu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitulo">
+
+            <EditText
+                android:id="@+id/editTextID"
+                android:layout_width="344dp"
+                android:layout_height="48dp"
+                android:ems="10"
+                android:hint="ID"
+                android:inputType="text" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="17dp" />
+
+            <EditText
+                android:id="@+id/editTextNombre"
+                android:layout_width="344dp"
+                android:layout_height="48dp"
+                android:ems="10"
+                android:hint="Nombre"
+                android:inputType="text" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="17dp" />
+
+            <EditText
+                android:id="@+id/editTextDescripcion"
+                android:layout_width="344dp"
+                android:layout_height="48dp"
+                android:ems="10"
+                android:hint="@string/Telefonoa"
+                android:inputType="text" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="17dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="2dp"
+                android:text="@string/herria" />
+
+            <Spinner
+                android:id="@+id/spinnerEstado"
+                android:layout_width="344dp"
+                android:layout_height="48dp"
+                android:background="#FF0000"
+                android:backgroundTint="#D0A2FF"
+                android:hint="Estado" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="2dp"
+                android:text="@string/generoa" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupGeneroa"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <RadioButton
+                    android:id="@+id/radioButtonFem"
+                    android:layout_width="182dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/femenino" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonMasc"
+                    android:layout_width="184dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/masculino" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/checkBoxLana"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lana"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="680dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

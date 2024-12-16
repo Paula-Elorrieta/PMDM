@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -50,6 +52,12 @@ public class LehenengoFragment extends Fragment {
             for (String lengoaia : lengoaiak) {
                 Log.i("Lengoaia", lengoaia);
             }
+
+            ListView listView = view.findViewById(R.id.listView);
+            ZerrendaAdapter adapter = new ZerrendaAdapter(requireContext(),
+                                                        (ArrayList<String>) lengoaiak);
+            listView.setAdapter(adapter);
+
         });
 
         return view;
