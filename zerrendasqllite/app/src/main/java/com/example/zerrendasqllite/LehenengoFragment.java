@@ -1,11 +1,8 @@
 package com.example.zerrendasqllite;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,20 +11,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class LehenengoFragment extends Fragment {
 
+    ListView listView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lehenengo, container, false);
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
         AppCompatActivity activity = (AppCompatActivity) requireActivity();
-        activity.setSupportActionBar(toolbar);
         activity.getSupportActionBar().setTitle("Lehenengo");
 
         EditText editTextIzena = view.findViewById(R.id.editTextIzena);
@@ -37,13 +37,24 @@ public class LehenengoFragment extends Fragment {
         Button buttonErakutsi = view.findViewById(R.id.buttonErakutsi);
 
         buttonGorde.setOnClickListener(v -> {
-            String izena = editTextIzena.getText().toString();
-            String deskribapena = editTextDeskribapena.getText().toString();
-
-            ZerrendaDAO zerrendaDAO = new ZerrendaDAO(requireContext());
-            long id = zerrendaDAO.gehituLengoaia(izena, deskribapena);
-            editTextIzena.setText("");
-            editTextDeskribapena.setText("");
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage("Gorde nahi duzu?").setTitle("Gorde");
+            builder.setPositiveButton("Bai", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    String izena = editTextIzena.getText().toString();
+                    String deskribapena = editTextDeskribapena.getText().toString();
+                    gehituLengoaia(izena, deskribapena);
+                    editTextIzena.setText("");
+                    editTextDeskribapena.setText("");
+                }
+            });
+            builder.setNegativeButton("Ez", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    editTextIzena.setText("");
+                    editTextDeskribapena.setText("");
+                }
+            });
+            builder.show();
         });
 
         buttonErakutsi.setOnClickListener(v -> {
@@ -53,13 +64,28 @@ public class LehenengoFragment extends Fragment {
                 Log.i("Lengoaia", lengoaia);
             }
 
-            ListView listView = view.findViewById(R.id.listView);
-            ZerrendaAdapter adapter = new ZerrendaAdapter(requireContext(),
-                                                        (ArrayList<String>) lengoaiak);
-            listView.setAdapter(adapter);
+
+
 
         });
 
         return view;
+    }
+
+    public void erakutsiLengoaiak() {
+
+        ZerrendaDAO zerrendaDAO = new ZerrendaDAO(requireContext());
+        List<String> lengoaiak = zerrendaDAO.lortuLengoaiak();
+        for (String lengoaia : lengoaiak) {
+            Log.i("Lengoaia", lengoaia);
+        }
+        ZerrendaAdapter adapter = new ZerrendaAdapter(requireContext(),
+                (ArrayList<String>) lengoaiak);
+        listView.setAdapter(adapter);
+    }
+
+    public void gehituLengoaia(String izena, String deskribapena) {
+        ZerrendaDAO zerrendaDAO = new ZerrendaDAO(requireContext());
+        long id = zerrendaDAO.gehituLengoaia(izena, deskribapena);
     }
 }
