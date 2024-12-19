@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -44,6 +45,7 @@ public class LehenengoFragment extends Fragment {
                 public void onClick(DialogInterface dialog, int id) {
                     String izena = editTextIzena.getText().toString();
                     String deskribapena = editTextDeskribapena.getText().toString();
+
                     gehituLengoaia(izena, deskribapena);
                     editTextIzena.setText("");
                     editTextDeskribapena.setText("");

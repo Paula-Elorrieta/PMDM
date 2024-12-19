@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 .findFragmentById(R.id.fragmentContainerView);
         int id = menuItem.getItemId();
         if (id == R.id.itxi) {
+            Toast.makeText(this, "Itxi", Toast.LENGTH_SHORT).show();
             fragment.itxi();
             return true;
         } else if (id == R.id.erakutsi) {
