@@ -34,19 +34,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
+        LehenengoFragment fragment = (LehenengoFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.fragmentContainerView);
         int id = menuItem.getItemId();
         if (id == R.id.itxi) {
-            Toast.makeText(getApplicationContext(), "Itxi", Toast.LENGTH_SHORT).show();
+            fragment.itxi();
             return true;
         } else if (id == R.id.erakutsi) {
-            LehenengoFragment fragment =(LehenengoFragment) getSupportFragmentManager()
-                    .findFragmentById(R.id.fragmentContainerView);
             if (fragment != null) {
                 fragment.erakutsiLengoaiak();
             }
-
             return true;
         }
         return super.onOptionsItemSelected(menuItem);
     }
+
 }

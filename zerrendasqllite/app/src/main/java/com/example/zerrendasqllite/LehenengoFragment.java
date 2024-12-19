@@ -25,7 +25,7 @@ public class LehenengoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_lehenengo, container, false);
         AppCompatActivity activity = (AppCompatActivity) requireActivity();
         activity.getSupportActionBar().setTitle("Lehenengo");
@@ -35,6 +35,7 @@ public class LehenengoFragment extends Fragment {
 
         Button buttonGorde = view.findViewById(R.id.buttonGorde);
         Button buttonErakutsi = view.findViewById(R.id.buttonErakutsi);
+        listView = view.findViewById(R.id.listView);
 
         buttonGorde.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -64,16 +65,11 @@ public class LehenengoFragment extends Fragment {
                 Log.i("Lengoaia", lengoaia);
             }
 
-
-
-
         });
-
         return view;
     }
 
     public void erakutsiLengoaiak() {
-
         ZerrendaDAO zerrendaDAO = new ZerrendaDAO(requireContext());
         List<String> lengoaiak = zerrendaDAO.lortuLengoaiak();
         for (String lengoaia : lengoaiak) {
@@ -88,4 +84,9 @@ public class LehenengoFragment extends Fragment {
         ZerrendaDAO zerrendaDAO = new ZerrendaDAO(requireContext());
         long id = zerrendaDAO.gehituLengoaia(izena, deskribapena);
     }
+
+    public void itxi() {
+        requireActivity().finish();
+    }
+
 }
