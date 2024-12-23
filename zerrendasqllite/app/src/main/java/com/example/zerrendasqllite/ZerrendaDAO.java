@@ -20,11 +20,16 @@ public class ZerrendaDAO {
     }
 
     // CREATE: Lengoaia bat datu-basean gehitu
-    public long gehituLengoaia(String izena, String deskribapena) {
+    public long gehituLengoaia(String izena, String deskribapena, boolean librea) {
         SQLiteDatabase db = dbHelper.getWritableDatabase(); // Idazteko moduan ireki datu-basea
         ContentValues values = new ContentValues();
         values.put(DbHelper.COLUMN_IZENA, izena);
         values.put(DbHelper.COLUMN_DESKRIBAPENA, deskribapena);
+        if (librea) {
+            values.put(DbHelper.COLUMN_LIBREA, 1);
+        } else {
+            values.put(DbHelper.COLUMN_LIBREA, 0);
+        }
 
         long id = db.insert(DbHelper.TABLE_LENGOAIAK, null, values);
         db.close();
@@ -32,15 +37,16 @@ public class ZerrendaDAO {
     }
 
     // READ: Lengoaia guztiak datu-basetik irakurri
-    public List<String> lortuLengoaiak() {
-        List<String> lengoaienZerrenda = new ArrayList<>();
+    public List<Lenguaia> lortuLengoaiak() {
+        List<Lenguaia> lengoaienZerrenda = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase(); // Irakurtzeko moduan ireki datu-basea
 
         // Lortu nahi diren zutabeak definitu
         String[] zutabeak = {
                 DbHelper.COLUMN_ID,
                 DbHelper.COLUMN_IZENA,
-                DbHelper.COLUMN_DESKRIBAPENA
+                DbHelper.COLUMN_DESKRIBAPENA,
+                DbHelper.COLUMN_LIBREA
         };
 
         // Kontsulta egin taulari
@@ -52,7 +58,9 @@ public class ZerrendaDAO {
             do {
                 String izena = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_IZENA));
                 String deskribapena = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_DESKRIBAPENA));
-                lengoaienZerrenda.add(izena + ": " + deskribapena); // Formatua: "Izena: Deskribapena"
+                Boolean librea = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_LIBREA)) > 0;
+                Lenguaia lengoaia = new Lenguaia(izena, deskribapena, librea);
+                lengoaienZerrenda.add(lengoaia);
             } while (cursor.moveToNext());
         }
 
@@ -62,13 +70,14 @@ public class ZerrendaDAO {
     }
 
     // READ: Lengoaia zehatz bat ID bidez lortu
-    public String lortuLengoaia(int id) {
+    public Lenguaia lortuLengoaia(int id) {
         SQLiteDatabase db = dbHelper.getReadableDatabase(); // Irakurtzeko moduan ireki datu-basea
 
         // Lortu nahi diren zutabeak definitu
         String[] zutabeak = {
                 DbHelper.COLUMN_IZENA,
-                DbHelper.COLUMN_DESKRIBAPENA
+                DbHelper.COLUMN_DESKRIBAPENA,
+                DbHelper.COLUMN_LIBREA
         };
 
         // Kontsulta egin ID zehatzari
@@ -80,20 +89,26 @@ public class ZerrendaDAO {
         if (cursor != null && cursor.moveToFirst()) {
             String izena = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_IZENA));
             String deskribapena = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_DESKRIBAPENA));
+            Boolean librea = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_LIBREA)) > 0;
             cursor.close(); // Cursor itxi
             db.close(); // Datu-basea itxi
-            return izena + ": " + deskribapena; // Formatua: "Izena: Deskribapena"
+            return new Lenguaia(izena, deskribapena, librea); // Lengoaia itzuli
         } else {
             return null; // Daturik ez badago, null itzuli
         }
     }
 
     // UPDATE: Lengoaia bat eguneratu ID bidez
-    public int eguneratuLengoaia(int id, String izena, String deskribapena) {
+    public int eguneratuLengoaia(int id, String izena, String deskribapena, boolean librea) {
         SQLiteDatabase db = dbHelper.getWritableDatabase(); // Idazteko moduan ireki datu-basea
         ContentValues values = new ContentValues();
         values.put(DbHelper.COLUMN_IZENA, izena); // Izena eguneratu
         values.put(DbHelper.COLUMN_DESKRIBAPENA, deskribapena); // Deskribapena eguneratu
+        if (librea) {
+            values.put(DbHelper.COLUMN_LIBREA, 1); // Librea eguneratu
+        } else {
+            values.put(DbHelper.COLUMN_LIBREA, 0); // Librea eguneratu
+        }
 
         // Eguneraketa egin ID zehatzari
         int eguneratutakoLerroKop = db.update(DbHelper.TABLE_LENGOAIAK, values,

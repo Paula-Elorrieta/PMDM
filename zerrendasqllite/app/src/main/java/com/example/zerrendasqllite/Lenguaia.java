@@ -2,22 +2,14 @@ package com.example.zerrendasqllite;
 
 public class Lenguaia {
 
-    private int id;
     private String izena;
     private String deskribapena;
+    private boolean librea;
 
-    public Lenguaia(int id, String izena, String deskribapena) {
-        this.id = id;
+    public Lenguaia(String izena, String deskribapena, boolean librea) {
         this.izena = izena;
         this.deskribapena = deskribapena;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        this.librea = librea;
     }
 
     public String getIzena() {
@@ -34,5 +26,13 @@ public class Lenguaia {
 
     public void setDeskribapena(String deskribapena) {
         this.deskribapena = deskribapena;
+    }
+
+    public boolean isLibrea() {
+        return librea;
+    }
+
+    public void setLibrea(boolean librea) {
+        this.librea = librea;
     }
 }

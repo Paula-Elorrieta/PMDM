@@ -11,78 +11,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/editTextIzena"
-            android:layout_width="329dp"
-            android:layout_height="54dp"
-            android:layout_marginTop="132dp"
-            android:ems="10"
-            android:hint="@string/izena"
-            android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/editTextDeskr"
-            android:layout_width="329dp"
-            android:layout_height="54dp"
-            android:layout_marginTop="88dp"
-            android:ems="10"
-            android:hint="@string/deskripzioa"
-            android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/editTextIzena" />
-
-        <Button
-            android:id="@+id/buttonGorde"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="528dp"
-            android:text="@string/gorde"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/buttonErakutsi"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextDeskr"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <Button
-            android:id="@+id/buttonErakutsi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="528dp"
-            android:text="@string/erakutsi_info"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.583"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextDeskr"
-            app:layout_constraintVertical_bias="1.0" />
-
         <LinearLayout
             android:layout_width="408dp"
-            android:layout_height="458dp"
-            android:layout_marginTop="70dp"
+            android:layout_height="700dp"
+            android:layout_marginBottom="96dp"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonGorde">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lenguaiak"
-                android:textSize="24sp" />
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent">
 
             <ListView
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
-                android:layout_height="353dp">
+                android:layout_height="662dp">
 
             </ListView>
         </LinearLayout>

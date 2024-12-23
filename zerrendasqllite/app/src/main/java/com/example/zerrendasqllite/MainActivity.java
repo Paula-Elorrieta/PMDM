@@ -41,10 +41,11 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Itxi", Toast.LENGTH_SHORT).show();
             fragment.itxi();
             return true;
-        } else if (id == R.id.erakutsi) {
-            if (fragment != null) {
-                fragment.erakutsiLengoaiak();
-            }
+        } else if (id == R.id.gehitu) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentContainerView, new GehituFragment())
+                    .addToBackStack(null)
+                    .commit();
             return true;
         }
         return super.onOptionsItemSelected(menuItem);

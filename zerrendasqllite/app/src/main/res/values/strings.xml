@@ -5,4 +5,13 @@
     <string name="gorde">Gorde</string>
     <string name="erakutsi_info">Erakutsi Info</string>
     <string name="lenguaiak">Lenguaiak</string>
+    <string name="gehitu_lenguaia">Gehitu lenguaia</string>
+    <string name="gehitu">Gehitu</string>
+    <string name="itzuli">Itzuli</string>
+    <string name="id">ID</string>
+
+    <array name="librea">
+        <item>Software libre</item>
+        <item>Software propietario</item>
+    </array>
 </resources>
