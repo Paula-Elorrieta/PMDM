@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,21 +35,31 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
-        LehenengoFragment fragment = (LehenengoFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.fragmentContainerView);
         int id = menuItem.getItemId();
+
         if (id == R.id.itxi) {
-            Toast.makeText(this, "Itxi", Toast.LENGTH_SHORT).show();
-            fragment.itxi();
+            Fragment currentFragment = getSupportFragmentManager()
+                    .findFragmentById(R.id.fragmentContainerView);
+
+            // instanceof es un operador que comprueba si un objeto es una instancia de una clase
+            // Asi no se cierra la aplicacion si no se esta en el fragmento principal
+            if (currentFragment instanceof LehenengoFragment) {
+                LehenengoFragment fragment = (LehenengoFragment) currentFragment;
+                fragment.itxi();
+            }
             return true;
-        } else if (id == R.id.gehitu) {
+
+        } else if (id == R.id.gehitu || id == R.id.gehituMenua) {
+            GehituFragment gehituFragment = new GehituFragment();
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentContainerView, new GehituFragment())
+                    .replace(R.id.fragmentContainerView, gehituFragment)
                     .addToBackStack(null)
                     .commit();
             return true;
         }
+
         return super.onOptionsItemSelected(menuItem);
     }
+
 
 }

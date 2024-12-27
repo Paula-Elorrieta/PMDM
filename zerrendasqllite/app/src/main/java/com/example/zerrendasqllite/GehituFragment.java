@@ -1,7 +1,9 @@
 package com.example.zerrendasqllite;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -29,7 +31,7 @@ public class GehituFragment extends Fragment {
         Spinner spinnerLibre = view.findViewById(R.id.spinnerLibre);
         String[] libreItems = getResources().getStringArray(R.array.librea);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(),
-                                                android.R.layout.simple_spinner_item, libreItems);
+                android.R.layout.simple_spinner_item, libreItems);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerLibre.setAdapter(adapter);
 
@@ -54,7 +56,7 @@ public class GehituFragment extends Fragment {
 
                 if (nombre.isEmpty() || descripcion.isEmpty()) {
                     Toast.makeText(requireContext(), "Ezin da hutsik utzi",
-                                        Toast.LENGTH_SHORT).show();
+                            Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -74,12 +76,28 @@ public class GehituFragment extends Fragment {
                     librea = false;
                 }
 
-                ZerrendaDAO zerrendaDAO = new ZerrendaDAO(requireContext());
-                long id = zerrendaDAO.gehituLengoaia(nombre, descripcion, librea);
-                getActivity().getSupportFragmentManager().popBackStack();
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+                builder.setMessage("Sortu nahiko duzu lengoaia hau?");
+                builder.setPositiveButton("Bai", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ZerrendaDAO zerrendaDAO = new ZerrendaDAO(requireContext());
+                        long id = zerrendaDAO.gehituLengoaia(nombre, descripcion, librea);
+                        getActivity().getSupportFragmentManager().popBackStack();
+                    }
+                });
+
+                builder.setNegativeButton("Ez", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(requireContext(), "Ez da gehitu", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                builder.show();
+
             }
         });
-
 
 
         return view;

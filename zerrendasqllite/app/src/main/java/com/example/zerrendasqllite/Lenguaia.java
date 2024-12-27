@@ -1,6 +1,8 @@
 package com.example.zerrendasqllite;
 
-public class Lenguaia {
+import java.io.Serializable;
+
+public class Lenguaia implements Serializable {
 
     private String izena;
     private String deskribapena;

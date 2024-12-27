@@ -9,9 +9,13 @@
     <string name="gehitu">Gehitu</string>
     <string name="itzuli">Itzuli</string>
     <string name="id">ID</string>
+    <string name="aldatu">Aldatu</string>
+    <string name="ezabatu">Ezabatu</string>
 
     <array name="librea">
         <item>Software libre</item>
         <item>Software propietario</item>
     </array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
