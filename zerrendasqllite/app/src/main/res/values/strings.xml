@@ -11,11 +11,12 @@
     <string name="id">ID</string>
     <string name="aldatu">Aldatu</string>
     <string name="ezabatu">Ezabatu</string>
-
     <array name="librea">
-        <item>Software libre</item>
-        <item>Software propietario</item>
+        <item>Software librea</item>
+        <item>Software propietarioa</item>
     </array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="utzi">Utzi</string>
+    <string name="lenguaiaTitulua">Lenguaiak</string>
+    <string name="aldatuTitulua">Aldatu lenguaia</string>
+    <string name="gehituTitulua">Gehitu lenguaia</string>
 </resources>

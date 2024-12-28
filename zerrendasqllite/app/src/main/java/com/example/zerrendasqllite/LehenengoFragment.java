@@ -7,19 +7,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class LehenengoFragment extends Fragment {
+
+    private ZerrendaAdapter adapter;
+    private List<Lenguaia> lenguaiaList;
+    private ArrayList<Lenguaia> lenguaiakFiltratuta;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,20 +32,35 @@ public class LehenengoFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_lehenengo, container, false);
         AppCompatActivity activity = (AppCompatActivity) requireActivity();
-        activity.getSupportActionBar().setTitle("Lenguaiak");
+        activity.getSupportActionBar().setTitle(R.string.lenguaiaTitulua);
 
         ListView listView = view.findViewById(R.id.listView);
+        LinearLayout searchContainer = view.findViewById(R.id.searchContainer);
+        SearchView searchView = view.findViewById(R.id.searchView);
 
         ZerrendaDAO zerrendaDAO = new ZerrendaDAO(requireContext());
-        List<Lenguaia> lengoaiak = zerrendaDAO.lortuLengoaiak();
+        lenguaiaList = zerrendaDAO.lortuLengoaiak();
 
-        if (lengoaiak.isEmpty()) {
+        if (lenguaiaList.isEmpty()) {
             zerrendaDAO.gehituLengoaia("Java", "Java lengoaia", false);
         }
 
-        ZerrendaAdapter adapter = new ZerrendaAdapter(requireContext(),
-                (ArrayList<Lenguaia>) lengoaiak);
+        adapter = new ZerrendaAdapter(requireContext(), new ArrayList<>(lenguaiaList));
         listView.setAdapter(adapter);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filtraketaEgin(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filtraketaEgin(newText);
+                return true;
+            }
+        });
 
         listView.setOnItemClickListener((parent, view1, position, id) -> {
             Lenguaia lenguaia = (Lenguaia) parent.getItemAtPosition(position);
@@ -61,7 +81,8 @@ public class LehenengoFragment extends Fragment {
                         .setPositiveButton("Bai", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                zerrendaDAO.ezabatuLengoaia(getID(lenguaia, lengoaiak));
+                                int id = lenguaia.getID(lenguaia, lenguaiaList);
+                                zerrendaDAO.ezabatuLengoaia(id);
                                 adapter.remove(lenguaia);
                                 dialog.dismiss();
                             }
@@ -76,6 +97,18 @@ public class LehenengoFragment extends Fragment {
                 alertDialog.show();
             });
 
+            btnAldatu.setOnClickListener(v -> {
+                AldatuFragment fragment = new AldatuFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("lenguaia", lenguaia);
+                bundle.putSerializable("lenguaiak", (Serializable) lenguaiaList);
+                fragment.setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragmentContainerView, fragment)
+                        .addToBackStack(null)
+                        .commit();
+                dialog.dismiss();
+            });
 
             dialog.show();
 
@@ -89,13 +122,22 @@ public class LehenengoFragment extends Fragment {
         requireActivity().finish();
     }
 
-    public int getID (Lenguaia lenguaia, List<Lenguaia> lenguaiak) {
-        for (int i = 0; i < lenguaiak.size(); i++) {
-            if (lenguaiak.get(i).equals(lenguaia)) {
-                return i + 1;
+    private void filtraketaEgin(String izena) {
+        ArrayList<Lenguaia> filtrados;
+
+        if (izena.isEmpty()) {
+            filtrados = new ArrayList<>(lenguaiaList);
+        } else {
+            filtrados = new ArrayList<>();
+            for (Lenguaia lenguaia : lenguaiaList) {
+                if (lenguaia.getIzena().toLowerCase().contains(izena.toLowerCase())) {
+                    filtrados.add(lenguaia);
+                }
             }
         }
-        return 0;
-    }
 
+        adapter.clear();
+        adapter.addAll(filtrados);
+        adapter.notifyDataSetChanged();
+    }
 }

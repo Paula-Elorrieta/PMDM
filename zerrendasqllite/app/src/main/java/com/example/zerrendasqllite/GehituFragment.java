@@ -23,7 +23,7 @@ public class GehituFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_gehitu, container, false);
         AppCompatActivity activity = (AppCompatActivity) requireActivity();
-        activity.getSupportActionBar().setTitle("Gehitu lengoaia");
+        activity.getSupportActionBar().setTitle(R.string.gehituTitulua);
 
         TextView editTextNombre = view.findViewById(R.id.editTextNombre);
         TextView editTextDescripcion = view.findViewById(R.id.editTextDescripcion);

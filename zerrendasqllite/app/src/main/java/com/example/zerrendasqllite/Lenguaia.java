@@ -1,6 +1,7 @@
 package com.example.zerrendasqllite;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Lenguaia implements Serializable {
 
@@ -36,5 +37,14 @@ public class Lenguaia implements Serializable {
 
     public void setLibrea(boolean librea) {
         this.librea = librea;
+    }
+
+    public int getID(Lenguaia lenguaia, List<Lenguaia> lenguaiak) {
+        for (int i = 0; i < lenguaiak.size(); i++) {
+            if (lenguaiak.get(i).equals(lenguaia)) {
+                return i + 1;
+            }
+        }
+        return 0;
     }
 }
