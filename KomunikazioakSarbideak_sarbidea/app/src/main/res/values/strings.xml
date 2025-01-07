@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">KomunikazioakSarbideak_sarbidea</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bluetooth_egiaztatu">Bluetooth egiaztatu</string>
+    <string name="gehigarria">Gehigarria</string>
+    <string name="wifi_egiaztatu">Wifi egiaztatu</string>
+    <string name="mapa_ikusi">Mapa ikusi</string>
+    <string name="egoera_egiaztatzen">Egoera egiaztatzen...</string>
+</resources>
