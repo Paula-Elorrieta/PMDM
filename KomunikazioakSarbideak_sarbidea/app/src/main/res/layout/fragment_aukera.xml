@@ -47,9 +47,19 @@
             android:layout_height="22dp" />
 
         <Button
-            android:id="@+id/btnGehigarria"
+            android:id="@+id/btnNFC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/gehigarria" />
+            android:text="NFC Egiaztatu" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="22dp" />
+
+        <Button
+            android:id="@+id/btnKamera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/kamera" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

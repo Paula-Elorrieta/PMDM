@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class WifiFragment extends Fragment {
@@ -21,12 +22,16 @@ public class WifiFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_wifi, container, false);
 
-        connectionStatus = view.findViewById(R.id.connection_status);
+        connectionStatus = view.findViewById(R.id.egoera);
+        Button btnAtzera = view.findViewById(R.id.btnAtzera);
         String status = checkConnectionType(requireContext());
         connectionStatus.setText(status);
+
+        btnAtzera.setOnClickListener(v -> {
+            requireActivity().getSupportFragmentManager().popBackStack();
+        });
 
         return view;
     }

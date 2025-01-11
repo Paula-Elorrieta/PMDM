@@ -4,35 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WifiFragment">
+    tools:context=".KameraFragment">
 
     <LinearLayout
-        android:layout_width="347dp"
-        android:layout_height="419dp"
+        android:layout_width="343dp"
+        android:layout_height="502dp"
+        android:gravity="center"
         android:orientation="vertical"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tituloWifi"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:text="Wifi aktibatuta dago:"
-            android:textSize="24sp"
-            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/egoera"
-            android:layout_width="336dp"
+        <Button
+            android:id="@+id/btnArgazkiaAtera"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/egoera_egiaztatzen"
-            android:textSize="18sp" />
+            android:text="Kamera zabaldu" />
+
+
+        <ImageView
+            android:id="@+id/imgAurreikuspena"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="222dp" />
+            android:layout_height="46dp" />
 
         <Button
             android:id="@+id/btnAtzera"
@@ -42,3 +44,4 @@
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

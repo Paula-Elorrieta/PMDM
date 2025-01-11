@@ -21,11 +21,12 @@ public class AukeraFragment extends Fragment {
         Button btnMapa = view.findViewById(R.id.btnMapa);
         Button btnWifi = view.findViewById(R.id.btnWifi);
         Button btnBlutuh = view.findViewById(R.id.btnBlutuh);
-        Button btnGehigarria = view.findViewById(R.id.btnGehigarria);
+        Button btnKamera = view.findViewById(R.id.btnKamera);
+        Button btnNFC = view.findViewById(R.id.btnNFC);
 
         btnMapa.setOnClickListener(v -> {
             requireActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentContainerView, new MapaFragment())
+                    .replace(R.id.fragmentContainerView, new KokapenaFragment())
                     .addToBackStack(null)
                     .commit();
         });
@@ -44,12 +45,21 @@ public class AukeraFragment extends Fragment {
                     .commit();
         });
 
-        btnGehigarria.setOnClickListener(v -> {
+        btnKamera.setOnClickListener(v -> {
             requireActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentContainerView, new GehigarriaFragment())
+                    .replace(R.id.fragmentContainerView, new KameraFragment())
                     .addToBackStack(null)
                     .commit();
         });
+
+        btnNFC.setOnClickListener(v -> {
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentContainerView, new NFCFragment())
+                    .addToBackStack(null)
+                    .commit();
+        });
+
+
         return view;
     }
 }

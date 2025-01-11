@@ -10,18 +10,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
-import android.bluetooth.BluetoothAdapter;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.fragment.app.Fragment;
 
 
 public class BlutuhFragment extends Fragment {
@@ -34,17 +26,22 @@ public class BlutuhFragment extends Fragment {
                              Bundle savedInstanceState) {
 
             View rootView = inflater.inflate(R.layout.fragment_blutuh, container, false);
-            txtBluetooth = rootView.findViewById(R.id.txtBluetooth);
+            txtBluetooth = rootView.findViewById(R.id.txtBluthu);
+            Button btnAtzera = rootView.findViewById(R.id.btnAtzera);
+
+            btnAtzera.setOnClickListener(v -> {
+                requireActivity().getSupportFragmentManager().popBackStack();
+            });
 
             bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
             if (bluetoothAdapter == null) {
-                txtBluetooth.setText("Bluetooth no soportado");
+                txtBluetooth.setText("Bluetooth ez dago eskuragarri");
             } else {
                 if (bluetoothAdapter.isEnabled()) {
-                    txtBluetooth.setText("Bluetooth está activado");
+                    txtBluetooth.setText("Bluetooth aktibatuta dago");
                 } else {
-                    txtBluetooth.setText("Bluetooth está desactivado");
+                    txtBluetooth.setText("Bluetooth desaktibatuta dago");
                 }
             }
 

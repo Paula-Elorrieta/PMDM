@@ -4,31 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WifiFragment">
+    tools:context=".KokapenaFragment"
+    tools:ignore="MissingClass">
 
     <LinearLayout
-        android:layout_width="347dp"
-        android:layout_height="419dp"
+        android:layout_width="355dp"
+        android:layout_height="354dp"
+        android:layout_marginBottom="232dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/tituloWifi"
-            android:layout_width="match_parent"
+            android:id="@+id/TituloKokapena"
+            android:layout_width="wrap_content"
             android:layout_height="46dp"
-            android:text="Wifi aktibatuta dago:"
+            android:text="Kokapena aktibatuta dago:"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/egoera"
-            android:layout_width="336dp"
-            android:layout_height="wrap_content"
-            android:text="@string/egoera_egiaztatzen"
-            android:textSize="18sp" />
+            android:id="@+id/txtKokapena"
+            android:layout_width="252dp"
+            android:layout_height="25dp"
+            android:text="@string/egoera_egiaztatzen" />
 
         <Space
             android:layout_width="match_parent"
@@ -38,7 +38,8 @@
             android:id="@+id/btnAtzera"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/atzera" />
+            android:text="Atzera" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
